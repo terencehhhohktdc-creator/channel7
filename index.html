@@ -3,260 +3,342 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHANNEL 7 - THE VOID</title>
+    <title>CHANNEL 7 - THE VOID - ARCHIVE_RECOVERY</title>
     <style>
-        /* Base Reset & Retro Fonts */
         @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
         
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><rect width="12" height="12" fill="%2300ff66"/></svg>'), auto;
         }
 
         body {
-            background-color: #05010a;
+            background-color: #020005;
             color: #00ff66;
             font-family: 'VT323', monospace;
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-            overflow-x: hidden;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            overflow: hidden;
             height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Strict 480p CRT Monitor Simulation */
+        .crt-monitor {
+            position: relative;
+            width: 100vh;
+            max-width: 640px; /* Forces 480p standard constraints */
+            aspect-ratio: 4 / 3;
+            background-color: #07020d;
+            border: 16px solid #141118;
+            border-radius: 30px;
+            box-shadow: 
+                inset 0 0 80px rgba(0, 0, 0, 1),
+                0 0 50px rgba(255, 0, 85, 0.15),
+                0 20px 40px rgba(0,0,0,0.8);
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
-        /* CRT Screen Effects */
-        body::before {
+        /* Phosphor Screen Shadow & Scanlines */
+        .crt-monitor::before {
             content: " ";
             display: block;
-            position: fixed;
+            position: absolute;
             top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            z-index: 99;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.08), rgba(0, 255, 0, 0.03), rgba(0, 0, 255, 0.08));
+            z-index: 10;
             background-size: 100% 4px, 6px 100%;
             pointer-events: none;
         }
 
-        /* Vignette & Color Distortion */
-        body::after {
+        /* Glass Curvature Vignette */
+        .crt-monitor::after {
             content: " ";
             display: block;
-            position: fixed;
+            position: absolute;
             top: 0; left: 0; bottom: 0; right: 0;
-            background: radial-gradient(circle, rgba(0,0,0,0) 60%, rgba(15, 0, 20, 0.8) 100%);
-            z-index: 100;
+            background: radial-gradient(circle, rgba(0,0,0,0) 55%, rgba(0, 0, 0, 0.9) 110%);
+            z-index: 11;
             pointer-events: none;
         }
 
-        /* Header / Logo Area */
+        /* VHS Interlacing & Static Overlay */
+        .vhs-static {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/5/5a/Static_flicker2.gif');
+            background-size: cover;
+            opacity: 0.12;
+            z-index: 5;
+            mix-blend-mode: screen;
+            pointer-events: none;
+        }
+
+        /* VHS Glitch Tracking Bar */
+        .tracking-glitch {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            filter: blur(4px);
+            opacity: 0.6;
+            z-index: 6;
+            animation: tracking 8s linear infinite;
+            pointer-events: none;
+        }
+
+        /* Content Layout */
+        .screen-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            z-index: 2;
+        }
+
         header {
             text-align: center;
-            padding: 20px;
-            background: rgba(10, 2, 15, 0.8);
-            border-bottom: 3px double #ff0055;
-            box-shadow: 0 0 15px rgba(255, 0, 85, 0.3);
+            border-bottom: 2px solid #ff0055;
+            padding-bottom: 10px;
         }
 
         .station-logo {
-            max-width: 100%;
-            width: 598px;
+            width: 100%;
+            max-width: 400px;
             height: auto;
-            image-rendering: pixelated;
-            filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.6));
-            animation: glitch 4s infinite;
+            filter: drop-shadow(0 0 5px rgba(255, 0, 85, 0.8)) contrast(1.2);
+            animation: chromatic-shift 3s infinite alternate;
         }
 
-        /* Main Broadcast Monitor */
-        main {
+        .vhs-metadata {
             display: flex;
+            justify-content: space-between;
+            font-size: 1.1rem;
+            color: #00ffff;
+            text-shadow: 0 0 4px #00ffff;
+            margin-top: 5px;
+        }
+
+        /* Main Alert Area */
+        .feed-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            flex-grow: 1;
-            padding: 20px;
-        }
-
-        .monitor-frame {
-            width: 100%;
-            max-width: 800px;
-            aspect-ratio: 4 / 3;
-            background-color: #11001c;
-            border: 10px solid #221133;
-            border-radius: 20px;
-            position: relative;
-            box-shadow: inset 0 0 40px #000, 0 0 30px rgba(255, 0, 85, 0.2);
-            overflow: hidden;
-        }
-
-        /* Interactive Static/Signal */
-        .broadcast-screen {
-            width: 100%;
-            height: 100%;
-            background: url('https://upload.wikimedia.org/wikipedia/commons/5/5a/Static_flicker2.gif');
-            background-size: cover;
-            opacity: 0.15;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 2;
-            mix-blend-mode: color-dodge;
-        }
-
-        .emergency-alert {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             text-align: center;
-            z-index: 5;
-            width: 80%;
+            padding: 10px 0;
         }
 
-        .alert-text {
-            color: #ff0055;
-            font-size: 3rem;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px #ff0055, 0 0 20px #ff0055;
-            animation: blink 1s infinite alternate;
+        .eas-header {
+            background: #ff0055;
+            color: #000;
+            font-weight: bold;
+            padding: 2px 10px;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            box-shadow: 0 0 10px #ff0055;
+            animation: violent-blink 0.4s infinite alternate;
         }
 
-        .sub-text {
-            color: #00ffff;
-            font-size: 1.8rem;
-            margin-top: 15px;
-            text-shadow: 0 0 5px #00ffff;
+        .terminal-text {
+            color: #ffcc00;
+            font-size: 1.3rem;
+            text-shadow: 0 0 5px rgba(255,204,0,0.5);
+            line-height: 1.4;
+            max-width: 90%;
         }
 
-        /* Navigation / Control Panel */
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 15px;
-            background: rgba(5, 1, 10, 0.9);
-            border-top: 2px dashed #00ffff;
+        /* Control Unit */
+        .console-controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            border-top: 1px dashed #00ff66;
+            padding-top: 15px;
         }
 
         .btn {
-            background: transparent;
-            border: 2px solid #00ff66;
+            background: rgba(0, 255, 102, 0.1);
+            border: 1px solid #00ff66;
             color: #00ff66;
             font-family: 'VT323', monospace;
-            font-size: 1.4rem;
-            padding: 5px 15px;
-            cursor: pointer;
-            text-shadow: 0 0 3px #00ff66;
-            transition: all 0.2s ease;
+            font-size: 1.2rem;
+            padding: 4px;
+            text-transform: uppercase;
+            box-shadow: inset 0 0 4px rgba(0,255,102,0.2);
+            transition: all 0.1s ease;
         }
 
         .btn:hover {
             background: #00ff66;
-            color: #05010a;
-            box-shadow: 0 0 15px #00ff66;
+            color: #000;
+            box-shadow: 0 0 10px #00ff66;
         }
 
-        /* Live Ticker Footer */
-        footer {
-            background: #11001c;
-            overflow: hidden;
-            white-space: nowrap;
-            padding: 5px 0;
-            border-top: 1px solid #ff0055;
+        /* Jumpscare Trap State */
+        .manifestation {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #000;
+            z-index: 999;
+            display: none;
+            justify-content: center;
+            align-items: center;
         }
 
-        .ticker {
-            display: inline-block;
-            padding-left: 100%;
-            animation: ticker-move 25s linear infinite;
-            color: #ffcc00;
-            text-shadow: 0 0 5px #ffcc00;
+        .entity-eye {
+            width: 150px;
+            height: 80px;
+            background: radial-gradient(circle, #ffffff 10%, #ff0000 30%, transparent 70%);
+            border-radius: 50%;
+            animation: eye-twitch 0.1s infinite;
+            filter: blur(2px);
         }
 
-        /* Animations */
-        @keyframes blink {
-            0% { opacity: 1; }
-            100% { opacity: 0.1; }
+        /* Retro Horror Animations */
+        @keyframes tracking {
+            0% { top: -20px; }
+            100% { top: 100%; }
         }
 
-        @keyframes ticker-move {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-100%, 0, 0); }
+        @keyframes violent-blink {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0.8; transform: scale(0.98); }
         }
 
-        @keyframes glitch {
-            0% { transform: translate(0) skew(0deg); }
-            2% { transform: translate(-2px, 2px) skew(-4deg); filter: hue-rotate(90deg); }
-            4% { transform: translate(2px, -1px) skew(8deg); }
-            6% { transform: translate(0) skew(0deg); }
-            100% { transform: translate(0) skew(0deg); }
+        @keyframes chromatic-shift {
+            0% { filter: drop-shadow(2px 0px 0px #ff0055) drop-shadow(-2px 0px 0px #00ffff); }
+            50% { filter: drop-shadow(-1px 1px 0px #ff0055) drop-shadow(2px -1px 0px #00ffff); }
+            100% { filter: drop-shadow(1px -2px 0px #ff0055) drop-shadow(-1px 2px 0px #00ffff); }
+        }
+
+        @keyframes eye-twitch {
+            0% { transform: translate(0, 0) scaleY(1); }
+            50% { transform: translate(-5px, 3px) scaleY(1.2); }
+            100% { transform: translate(4px, -2px) scaleY(0.8); }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <img src="YOUR_IMAGE_URL_HERE" alt="CHANNEL 7 LOGO" class="station-logo">
-    </header>
+    <div class="crt-monitor">
+        <div class="vhs-static"></div>
+        <div class="tracking-glitch"></div>
+        
+        <!-- Hidden Danger Overlay -->
+        <div class="manifestation" id="jumpscare">
+            <div class="entity-eye"></div>
+        </div>
 
-    <main>
-        <div class="monitor-frame">
-            <div class="broadcast-screen"></div>
-            
-            <div class="emergency-alert">
-                <div class="alert-text">⚠️ SIGNAL INTERRUPTED ⚠️</div>
-                <div class="sub-text">DO NOT LOOK AT THE NIGHT SKY.<br>STAY INDOORS.</div>
+        <div class="screen-content">
+            <header>
+                <!-- Keep your generated image URL here -->
+                <img src="YOUR_IMAGE_URL_HERE" alt="CHANNEL 7" class="station-logo">
+                <div class="vhs-metadata">
+                    <span>VCR PLAY ▶</span>
+                    <span id="vhs-clock">00:00:00</span>
+                </div>
+            </header>
+
+            <div class="feed-container">
+                <div class="eas-header" id="feed-status">SYS_ALERT: LEVEL 4</div>
+                <div class="terminal-text" id="log-display">
+                    [CORRUPTED DATA SEGMENT DETECTED]<br>
+                    THE BROADCAST INFRASTRUCTURE HAS BEEN UNMANNED SINCE MARCH. DO NOT ANSWER INTERNAL COAXIAL FREQUENCIES.
+                </div>
+            </div>
+
+            <div class="console-controls">
+                <button class="btn" onclick="overrideSignal()">OVERRIDE SIG</button>
+                <button class="btn" onclick="decryptLog()">DECRYPT LOG</button>
             </div>
         </div>
-    </main>
-
-    <nav>
-        <button class="btn" onclick="changeChannel()">TUNE CHANNEL</button>
-        <button class="btn" onclick="toggleAudio()">AUDIO LOGS</button>
-        <button class="btn" onclick="alert('ARCHIVE CORRUPTED')">ARCHIVES</button>
-    </nav>
-
-    <footer>
-        <div class="ticker">
-            LOCAL WEATHER: UNNATURAL FOG APPROACHING COUNTY LINES... COUNTDOWN TO MIDNIGHT BROADCAST HAS BEGUN... IF YOU HEAR THE WHISPERING, IT IS ALREADY TOO LATE...
-        </div>
-    </footer>
+    </div>
 
     <script>
-        // Simple interactive scripts for creepy immersion
-        function changeChannel() {
-            const screen = document.querySelector('.broadcast-screen');
-            const alertText = document.querySelector('.alert-text');
-            const subText = document.querySelector('.sub-text');
-            
-            // Temporary static flash
-            screen.style.opacity = "0.8";
+        // Fake Dynamic VHS Clock
+        setInterval(() => {
+            const now = new Date();
+            document.getElementById('vhs-clock').innerText = 
+                String(now.getHours()).padStart(2, '0') + ":" + 
+                String(now.getMinutes()).padStart(2, '0') + ":" + 
+                String(now.getSeconds()).padStart(2, '0');
+        }, 1000);
+
+        // Sinister Log Text Array
+        const horrorLogs = [
+            "THEY FOUND THE TRANSMITTER SUBSTATION. THERE ARE NO SURVIVORS.",
+            "IF YOU SEE A REFLECTION ON THE GLASS THAT IS NOT YOUR OWN, DISCONNECT POWER.",
+            "THE SIGNAL IS ALTERING THE PHOSPHOR LAYER. IT IS WALKING THROUGH.",
+            "REMINDER: THE GOVERNMENT ADVISORY WAS A LURE. STAY OUT OF THE CELLARS."
+        ];
+        let logIndex = 0;
+
+        function decryptLog() {
+            triggerAudioTone(440, 'sawtooth', 0.2);
+            document.getElementById('log-display').innerHTML = "DECRYPTING BITSTREAM...";
             
             setTimeout(() => {
-                screen.style.opacity = "0.15";
-                alertText.innerHTML = "❌ NO SIGNAL DETECTED ❌";
-                subText.innerHTML = "THEY ARE WATCHING BACK.";
-                subText.style.color = "#ff0055";
-            }, 300);
+                document.getElementById('log-display').innerHTML = horrorLogs[logIndex];
+                logIndex = (logIndex + 1) % horrorLogs.length;
+            }, 600);
         }
 
-        function toggleAudio() {
-            // Fakes a creepy synth beep/frequency
-            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            const oscillator = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
+        // Signal Override - Audio Warning & Hidden Jumpscare Event
+        function overrideSignal() {
+            triggerAudioTone(60, 'sine', 0.8); // Deep ominous distortion hum
             
-            oscillator.type = 'sawtooth';
-            oscillator.frequency.setValueAtTime(120, audioCtx.currentTime); // Low creepy hum
+            const status = document.getElementById('feed-status');
+            status.innerText = "CRITICAL: CONTAINER BREACH";
+            status.style.background = "#00ffff";
             
-            gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.5);
-            
-            oscillator.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-            
-            oscillator.start();
-            oscillator.stop(audioCtx.currentTime + 1.5);
+            document.getElementById('log-display').innerText = "IT HEARD THE FREQUENCY SYNCING. LOOK UP.";
+
+            // 10% Chance of a sudden brief visual entity manifestation (jumpscare) on click
+            if(Math.random() < 0.4) { 
+                setTimeout(() => {
+                    const js = document.getElementById('jumpscare');
+                    js.style.display = 'flex';
+                    triggerAudioTone(180, 'square', 0.4); // Harsh static blast
+                    
+                    setTimeout(() => {
+                        js.style.display = 'none';
+                    }, 250);
+                }, 1200);
+            }
+        }
+
+        // Web Audio Synth API Helper for Retro Tech Sounds
+        function triggerAudioTone(freq, type, duration) {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+                
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch(e) {
+                // Browsers safely catch this if user hasn't interacted with document yet
+            }
         }
     </script>
 </body>
