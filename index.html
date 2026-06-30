@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHANNEL 7 - THE CHANGER OF WAYS</title>
+    <title>CHANNEL 7 - THE SEVENFOLD ROT</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
         
@@ -11,12 +11,12 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 12 12"><path d="M6 0L9 4L6 12L3 4Z" fill="%2300ffff"/></svg>'), auto;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 12 12"><circle cx="6" cy="2" r="2" fill="%237a9a3a"/><circle cx="3" cy="7" r="2" fill="%237a9a3a"/><circle cx="9" cy="7" r="2" fill="%237a9a3a"/></svg>'), auto;
         }
 
         body {
-            background-color: #010008;
-            color: #00ffff;
+            background-color: #050502;
+            color: #8fa855;
             font-family: 'VT323', monospace;
             font-size: 1.4rem;
             letter-spacing: 1px;
@@ -27,75 +27,74 @@
             align-items: center;
         }
 
-        /* 480p Monitor warped by Tzeentchian energy */
+        /* 480p CRT decaying into a biological rust-bucket */
         .crt-monitor {
             position: relative;
             width: 100vh;
             max-width: 640px;
             aspect-ratio: 4 / 3;
-            background-color: #03010c;
-            border: 16px solid #100b1a;
+            background-color: #0b0f05;
+            border: 16px solid #1c1a11;
             border-radius: 30px;
             box-shadow: 
-                inset 0 0 80px rgba(0, 0, 0, 1),
-                0 0 60px rgba(255, 0, 170, 0.25),
-                0 0 120px rgba(0, 255, 255, 0.15);
+                inset 0 0 100px rgba(0, 0, 0, 1),
+                0 0 40px rgba(114, 142, 58, 0.2),
+                0 15px 40px rgba(0,0,0,0.9);
             overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.1s ease;
         }
 
-        /* Scanlines + Fluctuating Iridescent Warp Overlay */
+        /* Scanlines choked with mold and visual bile */
         .crt-monitor::before {
             content: " ";
             display: block;
             position: absolute;
             top: 0; left: 0; bottom: 0; right: 0;
             background: 
-                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%),
-                linear-gradient(90deg, rgba(255, 0, 128, 0.06), rgba(0, 255, 255, 0.04), rgba(255, 200, 0, 0.04));
+                linear-gradient(rgba(25, 30, 15, 0) 50%, rgba(0, 0, 0, 0.5) 50%),
+                linear-gradient(90deg, rgba(143, 168, 85, 0.05), rgba(166, 117, 56, 0.05), rgba(0, 0, 0, 0.1));
             z-index: 10;
-            background-size: 100% 4px, 6px 100%;
+            background-size: 100% 6px, 8px 100%;
             pointer-events: none;
         }
 
-        /* Curved Glass Screen Filter */
+        /* Sickly, swamp-like Vignette */
         .crt-monitor::after {
             content: " ";
             display: block;
             position: absolute;
             top: 0; left: 0; bottom: 0; right: 0;
-            background: radial-gradient(circle, rgba(0,0,0,0) 50%, rgba(5, 0, 15, 0.95) 110%);
+            background: radial-gradient(circle, rgba(0,0,0,0) 45%, rgba(14, 18, 8, 0.98) 105%);
             z-index: 11;
             pointer-events: none;
         }
 
-        /* Constant Cosmic Static */
+        /* Heavy Static resembling swarming pests */
         .vhs-static {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             background: url('https://upload.wikimedia.org/wikipedia/commons/5/5a/Static_flicker2.gif');
             background-size: cover;
-            opacity: 0.14;
+            opacity: 0.16;
             z-index: 5;
-            mix-blend-mode: screen;
+            mix-blend-mode: multiply; /* Darkens the image, making it muddy */
             pointer-events: none;
+            filter: sepia(0.6) hue-rotate(45deg);
         }
 
-        /* Shifting Horizontal Distortion Rift */
-        .warp-rift {
+        /* Slow, sagging tracking error line */
+        .sludge-ooze {
             position: absolute;
-            left: 0; width: 100%; height: 35px;
-            background: linear-gradient(transparent, rgba(0, 255, 255, 0.2), transparent);
-            filter: blur(6px);
+            left: 0; width: 100%; height: 60px;
+            background: linear-gradient(transparent, rgba(114, 142, 58, 0.15), rgba(166, 117, 56, 0.2), transparent);
+            filter: blur(8px);
             z-index: 6;
-            animation: rift-drift 6s ease-in-out infinite;
+            animation: ooze-drip 12s linear infinite;
             pointer-events: none;
         }
 
-        /* Screen Content Layout */
         .screen-content {
             padding: 25px;
             display: flex;
@@ -107,7 +106,7 @@
 
         header {
             text-align: center;
-            border-bottom: 2px solid #ff00aa;
+            border-bottom: 2px dashed #556633;
             padding-bottom: 8px;
         }
 
@@ -115,20 +114,21 @@
             width: 100%;
             max-width: 400px;
             height: auto;
-            /* Tzeentch Tones: Pink, Cyan, Violet, Gold shifting chromatic aberration */
-            animation: mutate-fringe 4s infinite linear;
+            /* Corroded, murky color fringing */
+            filter: sepia(0.8) hue-rotate(60deg) contrast(0.9) brightness(0.8);
+            animation: rust-decay 6s infinite ease-in-out;
         }
 
         .vhs-metadata {
             display: flex;
             justify-content: space-between;
             font-size: 1.1rem;
-            color: #ffcc00;
-            text-shadow: 0 0 6px #ffcc00;
+            color: #a67538;
+            text-shadow: 0 0 3px #a67538;
             margin-top: 5px;
         }
 
-        /* Information & Mutation Display */
+        /* Bloated Feed Box */
         .feed-container {
             flex-grow: 1;
             display: flex;
@@ -139,119 +139,116 @@
             padding: 10px 0;
         }
 
-        .alert-banner {
-            background: #ff00aa;
-            color: #010008;
+        .contagion-banner {
+            background: #556633;
+            color: #050502;
             font-weight: bold;
-            padding: 2px 14px;
-            font-size: 1.5rem;
+            padding: 4px 16px;
+            font-size: 1.4rem;
             margin-bottom: 12px;
-            box-shadow: 0 0 15px #ff00aa;
-            animation: reality-flicker 0.3s infinite alternate;
+            box-shadow: 0 0 8px rgba(85, 102, 51, 0.5);
+            text-transform: uppercase;
         }
 
         .terminal-text {
-            color: #00ffaa;
-            font-size: 1.35rem;
-            text-shadow: 0 0 5px rgba(0,255,170,0.4);
+            color: #c2ba93;
+            font-size: 1.3rem;
+            text-shadow: 0 0 3px rgba(194,186,147,0.3);
             line-height: 1.4;
-            max-width: 90%;
+            max-width: 95%;
             min-height: 80px;
+            animation: liquefy 8s infinite ease-in-out;
         }
 
-        /* Interactive Options */
+        /* Decrepit Controls */
         .console-controls {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
-            border-top: 1px dashed #ff00aa;
+            border-top: 1px dashed #556633;
             padding-top: 15px;
         }
 
         .btn {
-            background: rgba(255, 0, 170, 0.05);
-            border: 1px solid #ff00aa;
-            color: #ff00aa;
+            background: rgba(85, 102, 51, 0.1);
+            border: 1px solid #556633;
+            color: #8fa855;
             font-family: 'VT323', monospace;
             font-size: 1.2rem;
             padding: 6px;
             text-transform: uppercase;
-            box-shadow: inset 0 0 5px rgba(255,0,170,0.1);
-            transition: all 0.1s ease;
+            transition: all 0.2s ease;
         }
 
         .btn:hover {
-            background: #00ffff;
-            color: #010008;
-            border-color: #00ffff;
-            box-shadow: 0 0 15px #00ffff;
+            background: #556633;
+            color: #050502;
+            box-shadow: 0 0 10px rgba(85, 102, 51, 0.6);
         }
 
-        /* Secret Watcher Overlay */
-        .tzeentch-eye-overlay {
+        /* The Great Unclean Overlay */
+        .plague-bloom-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, rgba(3,1,12,0.95) 20%, #010008 100%);
+            background: #0d1207;
             z-index: 999;
             display: none;
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            border: 8px solid #4a361a;
         }
 
-        .lord-of-change-eye {
-            width: 120px;
-            height: 120px;
-            background: radial-gradient(circle, #010008 15%, #00ffff 35%, #ff00aa 60%, transparent 75%);
-            border-radius: 50%;
-            transform: rotate(45deg);
-            animation: cosmic-gaze 0.1s infinite alternate;
-            box-shadow: 0 0 30px #00ffff;
+        .fly-swarm {
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, #000000 20%, #4a5432 50%, transparent 70%);
+            animation: swarm-buzz 0.05s infinite;
         }
 
-        .whisper-caption {
+        .wet-cough-caption {
             margin-top: 20px;
-            color: #ffcc00;
-            font-size: 1.6rem;
-            animation: violent-blink 0.2s infinite;
+            color: #a67538;
+            font-size: 1.5rem;
+            text-align: center;
+            max-width: 80%;
         }
 
-        /* Horror/Warp Keyframes */
-        @keyframes rift-drift {
-            0% { top: -40px; }
-            50% { filter: hue-rotate(180deg); }
-            100% { top: 100%; }
+        /* Decay Animations */
+        @keyframes ooze-drip {
+            0% { top: -60px; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
         }
 
-        @keyframes reality-flicker {
-            0% { opacity: 1; filter: hue-rotate(0deg); }
-            50% { opacity: 0.9; }
-            100% { opacity: 0.4; filter: hue-rotate(90deg); }
+        @keyframes rust-decay {
+            0% { transform: scale(1); filter: sepia(0.8) hue-rotate(60deg) blur(0px); }
+            50% { transform: scale(0.99) rotate(0.5deg); filter: sepia(1) hue-rotate(40deg) blur(0.5px); }
+            100% { transform: scale(1); filter: sepia(0.8) hue-rotate(60deg) blur(0px); }
         }
 
-        @keyframes mutate-fringe {
-            0% { filter: drop-shadow(3px 0px 0px #ff00aa) drop-shadow(-3px 0px 0px #00ffff); }
-            33% { filter: drop-shadow(-2px 2px 0px #ffcc00) drop-shadow(2px -2px 0px #ff00aa); transform: scale(1.01) skewX(1deg); }
-            66% { filter: drop-shadow(2px -2px 0px #00ffff) drop-shadow(-2px 2px 0px #ffcc00); transform: scale(0.99) skewY(-1deg); }
-            100% { filter: drop-shadow(3px 0px 0px #ff00aa) drop-shadow(-3px 0px 0px #00ffff); }
+        @keyframes liquefy {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(3px) scaleY(0.98); letter-spacing: 0.5px; }
         }
 
-        @keyframes cosmic-gaze {
-            0% { transform: scale(1) rotate(43deg); filter: saturate(1.5); }
-            100% { transform: scale(1.1) rotate(47deg); filter: saturate(3); }
+        @keyframes swarm-buzz {
+            0% { transform: translate(2px, -2px) scale(0.95); }
+            100% { transform: translate(-2px, 3px) scale(1.05); }
         }
     </style>
 </head>
 <body>
 
-    <div class="crt-monitor" id="monitor">
+    <div class="crt-monitor">
         <div class="vhs-static"></div>
-        <div class="warp-rift"></div>
+        <div class="sludge-ooze"></div>
         
-        <!-- The All-Seeing Eye of Mutation -->
-        <div class="tzeentch-eye-overlay" id="gaze-lock">
-            <div class="lord-of-change-eye"></div>
-            <div class="whisper-caption">ALL ARCHIVES REWRITE THEMSELVES</div>
+        <!-- Outbreak Jumpscare Overlay -->
+        <div class="plague-bloom-overlay" id="outbreak">
+            <div class="fly-swarm"></div>
+            <div class="wet-cough-caption">REJOICE. THE SPORES HAVE INFILTRATED THE CATHODE TUBE.</div>
         </div>
 
         <div class="screen-content">
@@ -259,106 +256,89 @@
                 <!-- Keep your generated image URL here -->
                 <img src="YOUR_IMAGE_URL_HERE" alt="CHANNEL 7" class="station-logo">
                 <div class="vhs-metadata">
-                    <span>MUTATION RATE: 99.8%</span>
-                    <span id="vhs-counter">INDEX: 0000</span>
+                    <span>STAGNATION: STABLE</span>
+                    <span>CYCLE: 0007</span>
                 </div>
             </header>
 
             <div class="feed-container">
-                <div class="alert-banner" id="warp-status">THE MAZE UNFOLDS</div>
-                <div class="terminal-text" id="manifesto">
-                    REALITY IS RE-MANUFACTURING.<br>
-                    IF THE SCHEMATIC IN YOUR TELEVISION MATCHES YOUR HOME FLOORPLAN, CHOOSE A NEW ARCHITECTURE.
+                <div class="contagion-banner" id="plague-status">FLESH IS MALLEABLE</div>
+                <div class="terminal-text" id="incubation-log">
+                    [SYSTEM STAGNANT]<br>
+                    THE TRANSMISSION CABLE HAS SPUTUM IN THE INSULATION. DO NOT CLEAN THE MONITOR SCREEN. THE BIOME MUST INCUBATE.
                 </div>
             </div>
 
             <div class="console-controls">
-                <button class="btn" onclick="alterDestiny()">MUTATE TIMELINE</button>
-                <button class="btn" onclick="readScroll()">STUDY THE MAZE</button>
+                <button class="btn" onclick="spreadRot()">SPREAD SEED</button>
+                <button class="btn" onclick="gatherSpores()">HARVEST SPORES</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Increasing warp numerical counter
-        let counter = 777;
-        setInterval(() => {
-            counter += Math.floor(Math.random() * 9) + 1;
-            document.getElementById('vhs-counter').innerText = "INDEX: " + String(counter).padStart(4, '0');
-            
-            // Random micro-tremor in the monitor to simulate warp distortion
-            if (Math.random() < 0.15) {
-                const monitor = document.getElementById('monitor');
-                monitor.style.transform = `translate(${Math.random()*4-2}px, ${Math.random()*4-2}px)`;
-                setTimeout(() => monitor.style.transform = 'none', 50);
-            }
-        }, 800);
-
-        // Tzeentchian paradoxical logs
-        const tzeentchLogs = [
-            "YOU HAVE ALWAYS LIVED INSIDE THE CATACLYSM. THE BEFORE WAS A DREAM.",
-            "THE ARCHIVES ARE NOT RECORDING THE PAST. THEY ARE SCRIPTING YOUR TOMORROW.",
-            "DO NOT TRUST THE GEOMETRY OF YOUR ROOMS. THE ANGLES ARE SHIFTING.",
-            "NINE IS THE NUMBER. NINE IS THE SECONDS REMAINING IN YOUR DESIGNATION."
+        // Nurgle's stagnant, unhurried logs
+        const rotLogs = [
+            "THE NURSERY IS FULL. THE COAXIAL CABLE DROPS RUST LIKE POLLEN.",
+            "ACCEPT THE DAMPNESS IN YOUR BASEMENT. IT IS ONLY LIFE BREAKING GROUND.",
+            "THE BROADCAST IS NOT TELLING YOU TO RUN. IT IS TELLING YOU TO REST.",
+            "SEVEN FEET UNDER THE REPEATER STATION, THE SOIL IS WARM AND ALIVE."
         ];
-        let currentScroll = 0;
+        let sporeIndex = 0;
 
-        function readScroll() {
-            triggerSorcerousTone(294, 381, 'sawtooth', 0.2); // Dissonant dual frequency
-            document.getElementById('manifesto').innerHTML = "MUTATING LINGUISTIC STRUCTURES...";
+        function gatherSpores() {
+            triggerWetHum(90, 85, 0.4); // Wet, muddy frequency
+            document.getElementById('incubation-log').innerHTML = "FERMENTING LANGUAGE MATRICES...";
             
             setTimeout(() => {
-                document.getElementById('manifesto').innerHTML = tzeentchLogs[currentScroll];
-                currentScroll = (currentScroll + 1) % tzeentchLogs.length;
-            }, 500);
+                document.getElementById('incubation-log').innerHTML = rotLogs[sporeIndex];
+                sporeIndex = (sporeIndex + 1) % rotLogs.length;
+            }, 700);
         }
 
-        // Altering Destiny sparks visual chaos and potential mind-lock
-        function alterDestiny() {
-            triggerSorcerousTone(99, 111, 'triangle', 0.6);
+        function spreadRot() {
+            triggerWetHum(55, 50, 0.9); // Deep, agonizingly slow sub-bass choke
             
-            const banner = document.getElementById('warp-status');
-            banner.innerText = "CRITICAL: CHANGER OF WAYS AT HAND";
-            banner.style.background = "#ffcc00";
-            banner.style.color = "#010008";
+            const banner = document.getElementById('plague-status');
+            banner.innerText = "OUTBREAK: GRANDFATHER'S GIFT";
+            banner.style.background = "#a67538";
+            banner.style.color = "#0d1207";
             
-            document.getElementById('manifesto').innerHTML = "THE ARCH-ARCHITECT ACKNOWLEDGES YOUR CURIOSITY.";
+            document.getElementById('incubation-log').innerText = "THE CATHODE COIL EXPELS A SWEET, HEAVY ODOR.";
 
-            // High probability warp event (Tzeentch loves tricks)
-            if(Math.random() < 0.45) {
+            // Generous 50% chance of a lingering fly swarm manifestation
+            if(Math.random() < 0.5) {
                 setTimeout(() => {
-                    const gaze = document.getElementById('gaze-lock');
-                    gaze.style.display = 'flex';
-                    triggerSorcerousTone(880, 932, 'square', 0.3); // High-pitched piercing noise
+                    const outbreak = document.getElementById('outbreak');
+                    outbreak.style.display = 'flex';
+                    triggerWetHum(220, 230, 0.5); // Low buzzing pitch
                     
                     setTimeout(() => {
-                        gaze.style.display = 'none';
-                        // Re-scramble the status text completely as a side effect
-                        banner.innerText = "RE-REALITY LEVEL: CHOSEN";
-                        banner.style.background = "#00ffaa";
-                    }, 400);
-                }, 1000);
+                        outbreak.style.display = 'none';
+                        banner.innerText = "CONTAMINATION: TOTAL";
+                        banner.style.background = "#7a9a3a";
+                    }, 650);
+                }, 1100);
             }
         }
 
-        // Advanced Synth Audio to emulate Chaos Warp Frequencies
-        function triggerSorcerousTone(f1, f2, type, duration) {
+        // Web Audio Synth for wet, organic, low-frequency rot sounds
+        function triggerWetHum(f1, f2, duration) {
             try {
                 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                
-                // Two oscillators interlock to form an uncomfortable chord
                 const osc1 = audioCtx.createOscillator();
                 const osc2 = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
                 
-                osc1.type = type;
+                osc1.type = 'triangle'; // Smoother, muddy shape
                 osc1.frequency.setValueAtTime(f1, audioCtx.currentTime);
                 
-                osc2.type = 'sine';
+                // Slight frequency detune to create a sickening beating "pulse"
+                osc2.type = 'sawtooth';
                 osc2.frequency.setValueAtTime(f2, audioCtx.currentTime);
                 
-                gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gain.gain.linearRampToValueAtTime(0.001, audioCtx.currentTime + duration);
                 
                 osc1.connect(gain);
                 osc2.connect(gain);
