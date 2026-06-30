@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHANNEL 7 - THE VOID - ARCHIVE_RECOVERY</title>
+    <title>CHANNEL 7 - THE CHANGER OF WAYS</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
         
@@ -11,12 +11,12 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><rect width="12" height="12" fill="%2300ff66"/></svg>'), auto;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 12 12"><path d="M6 0L9 4L6 12L3 4Z" fill="%2300ffff"/></svg>'), auto;
         }
 
         body {
-            background-color: #020005;
-            color: #00ff66;
+            background-color: #010008;
+            color: #00ffff;
             font-family: 'VT323', monospace;
             font-size: 1.4rem;
             letter-spacing: 1px;
@@ -27,75 +27,75 @@
             align-items: center;
         }
 
-        /* Strict 480p CRT Monitor Simulation */
+        /* 480p Monitor warped by Tzeentchian energy */
         .crt-monitor {
             position: relative;
             width: 100vh;
-            max-width: 640px; /* Forces 480p standard constraints */
+            max-width: 640px;
             aspect-ratio: 4 / 3;
-            background-color: #07020d;
-            border: 16px solid #141118;
+            background-color: #03010c;
+            border: 16px solid #100b1a;
             border-radius: 30px;
             box-shadow: 
                 inset 0 0 80px rgba(0, 0, 0, 1),
-                0 0 50px rgba(255, 0, 85, 0.15),
-                0 20px 40px rgba(0,0,0,0.8);
+                0 0 60px rgba(255, 0, 170, 0.25),
+                0 0 120px rgba(0, 255, 255, 0.15);
             overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: transform 0.1s ease;
         }
 
-        /* Phosphor Screen Shadow & Scanlines */
+        /* Scanlines + Fluctuating Iridescent Warp Overlay */
         .crt-monitor::before {
             content: " ";
             display: block;
             position: absolute;
             top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.08), rgba(0, 255, 0, 0.03), rgba(0, 0, 255, 0.08));
+            background: 
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%),
+                linear-gradient(90deg, rgba(255, 0, 128, 0.06), rgba(0, 255, 255, 0.04), rgba(255, 200, 0, 0.04));
             z-index: 10;
             background-size: 100% 4px, 6px 100%;
             pointer-events: none;
         }
 
-        /* Glass Curvature Vignette */
+        /* Curved Glass Screen Filter */
         .crt-monitor::after {
             content: " ";
             display: block;
             position: absolute;
             top: 0; left: 0; bottom: 0; right: 0;
-            background: radial-gradient(circle, rgba(0,0,0,0) 55%, rgba(0, 0, 0, 0.9) 110%);
+            background: radial-gradient(circle, rgba(0,0,0,0) 50%, rgba(5, 0, 15, 0.95) 110%);
             z-index: 11;
             pointer-events: none;
         }
 
-        /* VHS Interlacing & Static Overlay */
+        /* Constant Cosmic Static */
         .vhs-static {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             background: url('https://upload.wikimedia.org/wikipedia/commons/5/5a/Static_flicker2.gif');
             background-size: cover;
-            opacity: 0.12;
+            opacity: 0.14;
             z-index: 5;
             mix-blend-mode: screen;
             pointer-events: none;
         }
 
-        /* VHS Glitch Tracking Bar */
-        .tracking-glitch {
+        /* Shifting Horizontal Distortion Rift */
+        .warp-rift {
             position: absolute;
-            left: 0;
-            width: 100%;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.15);
-            filter: blur(4px);
-            opacity: 0.6;
+            left: 0; width: 100%; height: 35px;
+            background: linear-gradient(transparent, rgba(0, 255, 255, 0.2), transparent);
+            filter: blur(6px);
             z-index: 6;
-            animation: tracking 8s linear infinite;
+            animation: rift-drift 6s ease-in-out infinite;
             pointer-events: none;
         }
 
-        /* Content Layout */
+        /* Screen Content Layout */
         .screen-content {
             padding: 25px;
             display: flex;
@@ -107,28 +107,28 @@
 
         header {
             text-align: center;
-            border-bottom: 2px solid #ff0055;
-            padding-bottom: 10px;
+            border-bottom: 2px solid #ff00aa;
+            padding-bottom: 8px;
         }
 
         .station-logo {
             width: 100%;
             max-width: 400px;
             height: auto;
-            filter: drop-shadow(0 0 5px rgba(255, 0, 85, 0.8)) contrast(1.2);
-            animation: chromatic-shift 3s infinite alternate;
+            /* Tzeentch Tones: Pink, Cyan, Violet, Gold shifting chromatic aberration */
+            animation: mutate-fringe 4s infinite linear;
         }
 
         .vhs-metadata {
             display: flex;
             justify-content: space-between;
             font-size: 1.1rem;
-            color: #00ffff;
-            text-shadow: 0 0 4px #00ffff;
+            color: #ffcc00;
+            text-shadow: 0 0 6px #ffcc00;
             margin-top: 5px;
         }
 
-        /* Main Alert Area */
+        /* Information & Mutation Display */
         .feed-container {
             flex-grow: 1;
             display: flex;
@@ -139,105 +139,119 @@
             padding: 10px 0;
         }
 
-        .eas-header {
-            background: #ff0055;
-            color: #000;
+        .alert-banner {
+            background: #ff00aa;
+            color: #010008;
             font-weight: bold;
-            padding: 2px 10px;
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-            box-shadow: 0 0 10px #ff0055;
-            animation: violent-blink 0.4s infinite alternate;
+            padding: 2px 14px;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            box-shadow: 0 0 15px #ff00aa;
+            animation: reality-flicker 0.3s infinite alternate;
         }
 
         .terminal-text {
-            color: #ffcc00;
-            font-size: 1.3rem;
-            text-shadow: 0 0 5px rgba(255,204,0,0.5);
+            color: #00ffaa;
+            font-size: 1.35rem;
+            text-shadow: 0 0 5px rgba(0,255,170,0.4);
             line-height: 1.4;
             max-width: 90%;
+            min-height: 80px;
         }
 
-        /* Control Unit */
+        /* Interactive Options */
         .console-controls {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
-            border-top: 1px dashed #00ff66;
+            border-top: 1px dashed #ff00aa;
             padding-top: 15px;
         }
 
         .btn {
-            background: rgba(0, 255, 102, 0.1);
-            border: 1px solid #00ff66;
-            color: #00ff66;
+            background: rgba(255, 0, 170, 0.05);
+            border: 1px solid #ff00aa;
+            color: #ff00aa;
             font-family: 'VT323', monospace;
             font-size: 1.2rem;
-            padding: 4px;
+            padding: 6px;
             text-transform: uppercase;
-            box-shadow: inset 0 0 4px rgba(0,255,102,0.2);
+            box-shadow: inset 0 0 5px rgba(255,0,170,0.1);
             transition: all 0.1s ease;
         }
 
         .btn:hover {
-            background: #00ff66;
-            color: #000;
-            box-shadow: 0 0 10px #00ff66;
+            background: #00ffff;
+            color: #010008;
+            border-color: #00ffff;
+            box-shadow: 0 0 15px #00ffff;
         }
 
-        /* Jumpscare Trap State */
-        .manifestation {
+        /* Secret Watcher Overlay */
+        .tzeentch-eye-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: #000;
+            background: radial-gradient(circle, rgba(3,1,12,0.95) 20%, #010008 100%);
             z-index: 999;
             display: none;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
         }
 
-        .entity-eye {
-            width: 150px;
-            height: 80px;
-            background: radial-gradient(circle, #ffffff 10%, #ff0000 30%, transparent 70%);
+        .lord-of-change-eye {
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, #010008 15%, #00ffff 35%, #ff00aa 60%, transparent 75%);
             border-radius: 50%;
-            animation: eye-twitch 0.1s infinite;
-            filter: blur(2px);
+            transform: rotate(45deg);
+            animation: cosmic-gaze 0.1s infinite alternate;
+            box-shadow: 0 0 30px #00ffff;
         }
 
-        /* Retro Horror Animations */
-        @keyframes tracking {
-            0% { top: -20px; }
+        .whisper-caption {
+            margin-top: 20px;
+            color: #ffcc00;
+            font-size: 1.6rem;
+            animation: violent-blink 0.2s infinite;
+        }
+
+        /* Horror/Warp Keyframes */
+        @keyframes rift-drift {
+            0% { top: -40px; }
+            50% { filter: hue-rotate(180deg); }
             100% { top: 100%; }
         }
 
-        @keyframes violent-blink {
-            0% { opacity: 1; transform: scale(1); }
-            100% { opacity: 0.8; transform: scale(0.98); }
+        @keyframes reality-flicker {
+            0% { opacity: 1; filter: hue-rotate(0deg); }
+            50% { opacity: 0.9; }
+            100% { opacity: 0.4; filter: hue-rotate(90deg); }
         }
 
-        @keyframes chromatic-shift {
-            0% { filter: drop-shadow(2px 0px 0px #ff0055) drop-shadow(-2px 0px 0px #00ffff); }
-            50% { filter: drop-shadow(-1px 1px 0px #ff0055) drop-shadow(2px -1px 0px #00ffff); }
-            100% { filter: drop-shadow(1px -2px 0px #ff0055) drop-shadow(-1px 2px 0px #00ffff); }
+        @keyframes mutate-fringe {
+            0% { filter: drop-shadow(3px 0px 0px #ff00aa) drop-shadow(-3px 0px 0px #00ffff); }
+            33% { filter: drop-shadow(-2px 2px 0px #ffcc00) drop-shadow(2px -2px 0px #ff00aa); transform: scale(1.01) skewX(1deg); }
+            66% { filter: drop-shadow(2px -2px 0px #00ffff) drop-shadow(-2px 2px 0px #ffcc00); transform: scale(0.99) skewY(-1deg); }
+            100% { filter: drop-shadow(3px 0px 0px #ff00aa) drop-shadow(-3px 0px 0px #00ffff); }
         }
 
-        @keyframes eye-twitch {
-            0% { transform: translate(0, 0) scaleY(1); }
-            50% { transform: translate(-5px, 3px) scaleY(1.2); }
-            100% { transform: translate(4px, -2px) scaleY(0.8); }
+        @keyframes cosmic-gaze {
+            0% { transform: scale(1) rotate(43deg); filter: saturate(1.5); }
+            100% { transform: scale(1.1) rotate(47deg); filter: saturate(3); }
         }
     </style>
 </head>
 <body>
 
-    <div class="crt-monitor">
+    <div class="crt-monitor" id="monitor">
         <div class="vhs-static"></div>
-        <div class="tracking-glitch"></div>
+        <div class="warp-rift"></div>
         
-        <!-- Hidden Danger Overlay -->
-        <div class="manifestation" id="jumpscare">
-            <div class="entity-eye"></div>
+        <!-- The All-Seeing Eye of Mutation -->
+        <div class="tzeentch-eye-overlay" id="gaze-lock">
+            <div class="lord-of-change-eye"></div>
+            <div class="whisper-caption">ALL ARCHIVES REWRITE THEMSELVES</div>
         </div>
 
         <div class="screen-content">
@@ -245,100 +259,117 @@
                 <!-- Keep your generated image URL here -->
                 <img src="YOUR_IMAGE_URL_HERE" alt="CHANNEL 7" class="station-logo">
                 <div class="vhs-metadata">
-                    <span>VCR PLAY ▶</span>
-                    <span id="vhs-clock">00:00:00</span>
+                    <span>MUTATION RATE: 99.8%</span>
+                    <span id="vhs-counter">INDEX: 0000</span>
                 </div>
             </header>
 
             <div class="feed-container">
-                <div class="eas-header" id="feed-status">SYS_ALERT: LEVEL 4</div>
-                <div class="terminal-text" id="log-display">
-                    [CORRUPTED DATA SEGMENT DETECTED]<br>
-                    THE BROADCAST INFRASTRUCTURE HAS BEEN UNMANNED SINCE MARCH. DO NOT ANSWER INTERNAL COAXIAL FREQUENCIES.
+                <div class="alert-banner" id="warp-status">THE MAZE UNFOLDS</div>
+                <div class="terminal-text" id="manifesto">
+                    REALITY IS RE-MANUFACTURING.<br>
+                    IF THE SCHEMATIC IN YOUR TELEVISION MATCHES YOUR HOME FLOORPLAN, CHOOSE A NEW ARCHITECTURE.
                 </div>
             </div>
 
             <div class="console-controls">
-                <button class="btn" onclick="overrideSignal()">OVERRIDE SIG</button>
-                <button class="btn" onclick="decryptLog()">DECRYPT LOG</button>
+                <button class="btn" onclick="alterDestiny()">MUTATE TIMELINE</button>
+                <button class="btn" onclick="readScroll()">STUDY THE MAZE</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Fake Dynamic VHS Clock
+        // Increasing warp numerical counter
+        let counter = 777;
         setInterval(() => {
-            const now = new Date();
-            document.getElementById('vhs-clock').innerText = 
-                String(now.getHours()).padStart(2, '0') + ":" + 
-                String(now.getMinutes()).padStart(2, '0') + ":" + 
-                String(now.getSeconds()).padStart(2, '0');
-        }, 1000);
+            counter += Math.floor(Math.random() * 9) + 1;
+            document.getElementById('vhs-counter').innerText = "INDEX: " + String(counter).padStart(4, '0');
+            
+            // Random micro-tremor in the monitor to simulate warp distortion
+            if (Math.random() < 0.15) {
+                const monitor = document.getElementById('monitor');
+                monitor.style.transform = `translate(${Math.random()*4-2}px, ${Math.random()*4-2}px)`;
+                setTimeout(() => monitor.style.transform = 'none', 50);
+            }
+        }, 800);
 
-        // Sinister Log Text Array
-        const horrorLogs = [
-            "THEY FOUND THE TRANSMITTER SUBSTATION. THERE ARE NO SURVIVORS.",
-            "IF YOU SEE A REFLECTION ON THE GLASS THAT IS NOT YOUR OWN, DISCONNECT POWER.",
-            "THE SIGNAL IS ALTERING THE PHOSPHOR LAYER. IT IS WALKING THROUGH.",
-            "REMINDER: THE GOVERNMENT ADVISORY WAS A LURE. STAY OUT OF THE CELLARS."
+        // Tzeentchian paradoxical logs
+        const tzeentchLogs = [
+            "YOU HAVE ALWAYS LIVED INSIDE THE CATACLYSM. THE BEFORE WAS A DREAM.",
+            "THE ARCHIVES ARE NOT RECORDING THE PAST. THEY ARE SCRIPTING YOUR TOMORROW.",
+            "DO NOT TRUST THE GEOMETRY OF YOUR ROOMS. THE ANGLES ARE SHIFTING.",
+            "NINE IS THE NUMBER. NINE IS THE SECONDS REMAINING IN YOUR DESIGNATION."
         ];
-        let logIndex = 0;
+        let currentScroll = 0;
 
-        function decryptLog() {
-            triggerAudioTone(440, 'sawtooth', 0.2);
-            document.getElementById('log-display').innerHTML = "DECRYPTING BITSTREAM...";
+        function readScroll() {
+            triggerSorcerousTone(294, 381, 'sawtooth', 0.2); // Dissonant dual frequency
+            document.getElementById('manifesto').innerHTML = "MUTATING LINGUISTIC STRUCTURES...";
             
             setTimeout(() => {
-                document.getElementById('log-display').innerHTML = horrorLogs[logIndex];
-                logIndex = (logIndex + 1) % horrorLogs.length;
-            }, 600);
+                document.getElementById('manifesto').innerHTML = tzeentchLogs[currentScroll];
+                currentScroll = (currentScroll + 1) % tzeentchLogs.length;
+            }, 500);
         }
 
-        // Signal Override - Audio Warning & Hidden Jumpscare Event
-        function overrideSignal() {
-            triggerAudioTone(60, 'sine', 0.8); // Deep ominous distortion hum
+        // Altering Destiny sparks visual chaos and potential mind-lock
+        function alterDestiny() {
+            triggerSorcerousTone(99, 111, 'triangle', 0.6);
             
-            const status = document.getElementById('feed-status');
-            status.innerText = "CRITICAL: CONTAINER BREACH";
-            status.style.background = "#00ffff";
+            const banner = document.getElementById('warp-status');
+            banner.innerText = "CRITICAL: CHANGER OF WAYS AT HAND";
+            banner.style.background = "#ffcc00";
+            banner.style.color = "#010008";
             
-            document.getElementById('log-display').innerText = "IT HEARD THE FREQUENCY SYNCING. LOOK UP.";
+            document.getElementById('manifesto').innerHTML = "THE ARCH-ARCHITECT ACKNOWLEDGES YOUR CURIOSITY.";
 
-            // 10% Chance of a sudden brief visual entity manifestation (jumpscare) on click
-            if(Math.random() < 0.4) { 
+            // High probability warp event (Tzeentch loves tricks)
+            if(Math.random() < 0.45) {
                 setTimeout(() => {
-                    const js = document.getElementById('jumpscare');
-                    js.style.display = 'flex';
-                    triggerAudioTone(180, 'square', 0.4); // Harsh static blast
+                    const gaze = document.getElementById('gaze-lock');
+                    gaze.style.display = 'flex';
+                    triggerSorcerousTone(880, 932, 'square', 0.3); // High-pitched piercing noise
                     
                     setTimeout(() => {
-                        js.style.display = 'none';
-                    }, 250);
-                }, 1200);
+                        gaze.style.display = 'none';
+                        // Re-scramble the status text completely as a side effect
+                        banner.innerText = "RE-REALITY LEVEL: CHOSEN";
+                        banner.style.background = "#00ffaa";
+                    }, 400);
+                }, 1000);
             }
         }
 
-        // Web Audio Synth API Helper for Retro Tech Sounds
-        function triggerAudioTone(freq, type, duration) {
+        // Advanced Synth Audio to emulate Chaos Warp Frequencies
+        function triggerSorcerousTone(f1, f2, type, duration) {
             try {
                 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                const osc = audioCtx.createOscillator();
+                
+                // Two oscillators interlock to form an uncomfortable chord
+                const osc1 = audioCtx.createOscillator();
+                const osc2 = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
                 
-                osc.type = type;
-                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                osc1.type = type;
+                osc1.frequency.setValueAtTime(f1, audioCtx.currentTime);
                 
-                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                osc2.type = 'sine';
+                osc2.frequency.setValueAtTime(f2, audioCtx.currentTime);
+                
+                gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
                 
-                osc.connect(gain);
+                osc1.connect(gain);
+                osc2.connect(gain);
                 gain.connect(audioCtx.destination);
                 
-                osc.start();
-                osc.stop(audioCtx.currentTime + duration);
-            } catch(e) {
-                // Browsers safely catch this if user hasn't interacted with document yet
-            }
+                osc1.start();
+                osc2.start();
+                
+                osc1.stop(audioCtx.currentTime + duration);
+                osc2.stop(audioCtx.currentTime + duration);
+            } catch(e) {}
         }
     </script>
 </body>
